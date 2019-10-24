@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "b6553838-fc43-487d-b29f-f77be72ae46b",
+		"name": "newman test",
+		"description": "PMAK-5dac43bec1e76c00364ee682-5919457df4f5e5e7779a3913dda42c52a0\n\nhttps://api.getpostman.com/collections/706a03d4-2418-4935-b56a-580506310cf7?apikey=PMAK-5dac43bec1e76c00364ee682-5919457df4f5e5e7779a3913dda42c52a0\n\nnew\nPMAK-5dad66e27f638e003c740201-8f2fe75a798e8387437eb287de16656be0\nhttps://api.getpostman.com/collections/b6553838-fc43-487d-b29f-f77be72ae46b?apikey=PMAK-5dad66e27f638e003c740201-8f2fe75a798e8387437eb287de16656be0\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "newman test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8db6a7e4-5b5a-4a66-8cf2-6da4976ac29d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.getpostman.com/collections/706a03d4-2418-4935-b56a-580506310cf7?apikey=PMAK-5dac43bec1e76c00364ee682-5919457df4f5e5e7779a3913dda42c52a0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"getpostman",
+						"com"
+					],
+					"path": [
+						"collections",
+						"706a03d4-2418-4935-b56a-580506310cf7"
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "PMAK-5dac43bec1e76c00364ee682-5919457df4f5e5e7779a3913dda42c52a0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "spotify",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c95c578-e2ab-41c3-8bb1-2ddf195e6b49",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Artist Vs Poet\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getByArtist ($name: String!) {\n    queryArtists (byName: $name) {\n        name\n        image\n        albums {\n            name\n        }\n    }\n}\n\n",
+						"variables": "{\n\t\"name\": \"{{artist}}\"\n}"
+					},
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://spotify-graphql-server.herokuapp.com/graphql",
+					"protocol": "https",
+					"host": [
+						"spotify-graphql-server",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4c30d7b8-12ce-440a-8282-a89d46d6a175",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "60d55b20-0991-4430-9558-d4decefde67d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
